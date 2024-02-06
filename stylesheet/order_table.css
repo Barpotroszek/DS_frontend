@@ -1,0 +1,18 @@
+
+.img{
+    background-repeat: no-repeat;
+    background-position: 50%;
+    max-height: 5rem;
+}
+
+tr{
+    text-align: center;
+    width: fit-content !important;
+}
+
+tr input, tr input:active {
+    display: inline-block;
+    text-align: center !important;
+    border-radius: .2em;
+    border: 1px solid;
+}

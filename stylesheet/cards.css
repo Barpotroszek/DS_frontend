@@ -1,0 +1,74 @@
+.books{
+    display: flex;
+    flex-wrap: wrap;
+    gap: .4em;
+    margin: .4em;
+}
+
+.card:hover{
+    transform: scale(1.1);
+    z-index: 5;
+}
+
+.card, .row{
+    /* margin: .2em .2em; */
+    /* background-color: var(--main-bg); */
+    background-color: white !important;
+    padding: .5em 1em;
+    width: max-content;
+    position: relative;
+    /* * Żeby zrobić w pionie, wywalić ten grid, bootsrap da swojego flexa */
+    /* display: grid !important;  */
+    grid-template-columns: 1fr auto;
+    gap: .5em;
+    border: .2px solid #00000033;
+    border-radius: .4em;
+    box-shadow: #696969de 0px 1.5px 2px;
+    z-index: 2;
+
+    color: var(--dark-font);
+    text-decoration: none;
+
+    transition: all .1s;
+}
+
+.card h3{
+    margin: .2em 0;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+.dostepnosc {
+    /* display: none; */
+    font-weight: bolder;
+}
+
+.dostepnosc::before{
+    margin-left: .2em;
+    content: "Stan: ";
+    font-weight: initial;
+} 
+
+.price{
+    font-size: 120%;
+    font-weight: bolder;
+    /* position: absolute; */
+    /* bottom: 1em; */
+    align-self: flex-end;
+}
+
+.price::after {
+    content: " zł";
+}
+.card > .img{
+    width: 3.9em;
+    height: 6em;
+    /* margin: .5em; */
+    /* background-color: brown; */
+    writing-mode: vertical-lr;
+    text-align: center;
+    border: .5px dotted black
+}

@@ -1,0 +1,71 @@
+main {
+    display: grid;
+    grid-template-rows: auto auto 1fr;
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.topic{
+    grid-column: 1/5;
+    font-size: 1.7em;
+    text-decoration: none;
+    border-bottom: 1px solid;
+    height: max-content;
+}
+
+main > img {
+    grid-column: 2/3;
+    height: 17em;
+}
+
+.details {
+    height: 100%;
+    display: grid;
+    grid-template-rows: 1fr auto auto    
+}
+
+.details > ul{
+    width: max-content;
+    height: max-content;
+    justify-self: center;
+}
+
+.info{
+    font-weight: bold; 
+}
+
+.info::before{
+    font-weight: lighter;
+    content: attr(data-tag);
+}
+
+
+.prize{
+    display: block;
+    font-size: xx-large;
+    text-align: right;
+}
+
+.prize::before{
+    content: "Cena: ";
+    font-size: large;
+    text-align: left;
+} 
+
+.prize::after{
+    content: "zł";
+}
+
+.description{
+    grid-column: 1/5;
+    margin: 1em;
+    text-align: justify;
+}
+
+.description::before{
+    content: "Opis:";
+    display: block;
+    font-size: 1.2em;
+    font-weight: bold;
+    border-bottom: 1px solid;
+    margin-bottom: .5em;
+}
