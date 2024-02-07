@@ -10,3 +10,4 @@ Frontend do strony Diakonii Słowa Diecezji Warszawsko-Praskiej
 ### sekcja dla sprzedawcy
 - [Lista zamówień](https://barpotroszek.github.io/DS_frontent/orders_list.html)
 - [Szczegóły zamówienia](https://barpotroszek.github.io/DS_frontent/order_details.html)
+- [Dodawanie/aktualizowanie artykułu](https://barpotroszek.github.io/DS_frontent/order_details.html)
