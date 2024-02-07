@@ -43,12 +43,13 @@
     <div class="main-wrapper">
         <main>
             <h2 class="topic">Dodawanie artykułu</h2>
+            <form class="form-floating">
+            
             <div class="img">
-                <img src="zabity_za_prawde.jpg" alt="">
+                <img alt="Miejsce na zdjęcie">
                 <button class="btn btn-secondary">Dodaj/aktualizuj zdjęcie</button>
             </div>
 
-            <form class="form-floating">
                 <ul>
                     <li class="form-floating">
                         
@@ -74,7 +75,7 @@
                             <label for="amount" class="form-label" >Liczba sztuk:</label>
                         </li>
                         <li class="col-md form-floating">
-                            <input type="number" class=form-control size=2 min="1" name="prize" id="prize" placeholder="23" required>
+                            <input type="number" class=form-control step="0.01" size=2 min="1" name="prize" id="prize" placeholder="23" required>
                             <label for="prize" class="form-label">Cena (zł):</label>
                         </li>
                     </div>
