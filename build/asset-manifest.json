@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/static/css/main.9eaa7a8c.css",
+    "main.js": "/static/js/main.d1e0592e.js",
+    "static/js/592.918a8bb2.chunk.js": "/static/js/592.918a8bb2.chunk.js",
+    "static/media/zabity_za_prawde.jpg": "/static/media/zabity_za_prawde.cf733dfcdb8585c489f0.jpg",
+    "index.html": "/index.html",
+    "main.9eaa7a8c.css.map": "/static/css/main.9eaa7a8c.css.map",
+    "main.d1e0592e.js.map": "/static/js/main.d1e0592e.js.map",
+    "592.918a8bb2.chunk.js.map": "/static/js/592.918a8bb2.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.9eaa7a8c.css",
+    "static/js/main.d1e0592e.js"
+  ]
+}
