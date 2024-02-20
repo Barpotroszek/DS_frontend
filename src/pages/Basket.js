@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import img from "../zabity_za_prawde.jpg";
 import "../stylesheet/order_table.css";
-import { OutlineDangerBtn, PrimaryBtn } from "./components/Buttons";
+import { OutlineDangerBtn, PrimaryBtn, TestButton } from "./components/Buttons";
 import { Link } from "react-router-dom";
 import routes from "./components/routes";
 import { useOrderContext } from "./hooks/OrderContext";
@@ -86,7 +86,6 @@ export default function Basket() {
     const d = list.filter((v) => {
       return v.id ? v : null;
     });
-    console.log({ d });
     // eslint-disable-next-line 
     dt = d;
     sessionStorage.setItem("basket", JSON.stringify(d));
@@ -94,13 +93,25 @@ export default function Basket() {
 
   const [list, updateList] = useState(dt);
 
+  useEffect(()=>{
+    console.log("Updating storage");
+    sessionStorage.setItem("basket", JSON.stringify(list));
+    setBasket(list.length > 0)
+  },[list])
+
   const updateListMid = (i, v) => {
     let temp = list;
     temp[i].amount = v;
     updateList([...temp]);
-    sessionStorage.setItem("basket", JSON.stringify(temp));
   };
   let sum = 0;
+
+  // !TEST-REASON
+  const fillBasket = () => {
+    updateList([...data]);
+    // window.location.reload()
+    // console.log(data);
+  }
 
   if (dt === null || dt.length === 0)
     return (
@@ -109,6 +120,8 @@ export default function Basket() {
         <span style={{ textAlign: "center", width: "100%" }}>
           Twój koszyk jest pusty...
         </span>
+        {/* !TEST-REASON */}
+        <TestButton action={fillBasket}>Napełnij koszyk</TestButton>
       </div>
     );
 
@@ -116,18 +129,11 @@ export default function Basket() {
     console.log("To delete: ", nr);
     let received = list.filter((v, i) => {
       if (nr - 1 !== i) {
-        setBasket(true);
         return v;
       }
       return null;
     });
-
-    try {
-      sessionStorage.setItem("basket", JSON.stringify(received));
-    } catch (error) {
-    } finally {
-      updateList([...received]);
-    }
+    updateList([...received]);
   }
 
   return (
@@ -148,17 +154,11 @@ export default function Basket() {
         <tbody>
           {list.map((v, i) => {
             sum += v.price * v.amount;
-            console.log(v);
             return Tr(v, i + 1, filterList, updateListMid);
           })}
 
           <tr className="table-secondary">
             <td colSpan="6" style={{ textAlign: "end" }}>
-              {/*   Razem:
-            </td>
-            <td className="price">{sum}</td>
-            <td> 
-            */}
             </td>
           </tr>
         </tbody>
@@ -166,13 +166,13 @@ export default function Basket() {
 
       <span
         className="mw"
-        style={{ display: "grid", justifyContent: "end", gap: ".7em" }}
+        style={{ display: "grid", justifyItems: "end", gap: ".7em", }}
       >
         <span
           className="price"
           style={{ fontSize: "x-large", marginRight: ".5em" }}
         >
-          {sum}
+          { (Math.round(sum*100) / 100).toFixed(2) }
         </span>
         <Link to={routes.CLIENT_SUBMIT_ORDER}>
           <PrimaryBtn txt="Złóż zamówienie" />
