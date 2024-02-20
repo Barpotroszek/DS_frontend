@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import "../../stylesheet/order_table.css";
 import { OutlineBtn, PrimaryBtn } from "../components/Buttons";
 import SearchBar from "../components/SearchBar";
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const img=null;
 
@@ -15,8 +15,8 @@ function Tr(d, i) {
       <td /*scope="col" */ key="img">
         <img className="img" src={d.img} alt="img"/>
       </td>
-      <td /*scope="col" */ key="title"><NavLink to={"./"+d.id}>
-      {d.title}</NavLink></td>
+      <td /*scope="col" */ key="title"><Link to={"./"+d.id}>
+      {d.title}</Link></td>
         
       <td /*scope="col" */ className="align-items-center" key="amount">
         

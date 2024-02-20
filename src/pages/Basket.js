@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import img from "../zabity_za_prawde.jpg";
 import "../stylesheet/order_table.css";
 import { OutlineDangerBtn, PrimaryBtn } from "./components/Buttons";
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import routes from "./components/routes";
 
 function Tr(d, i, f, updateAmount) {
@@ -20,8 +20,8 @@ function Tr(d, i, f, updateAmount) {
       <td /*scope="col" */ key="img">
         <img className="img" src={d.img} alt="preview" />
       </td>
-      <td /*scope="col" */ key="title"><NavLink to={"/items/"+d.id}>
-      {d.title}</NavLink></td>
+      <td /*scope="col" */ key="title"><Link to={"/items/"+d.id}>
+      {d.title}</Link></td>
         
       <td /*scope="col" */ className="align-items-center" key="amount">
         <button
@@ -153,7 +153,7 @@ export default function Basket() {
 
       <span className="mw" style={{ display: "grid", justifyContent: "end", gap: ".7em" }}>
         <span className="price" style={{fontSize: "x-large", marginRight: ".5em"}}>{sum}</span>
-        <NavLink to={routes.CLIENT_SUBMIT_ORDER}><PrimaryBtn txt="Złóż zamówienie"/></NavLink>
+        <Link to={routes.CLIENT_SUBMIT_ORDER}><PrimaryBtn txt="Złóż zamówienie"/></Link>
       </span>
     </div>
   );

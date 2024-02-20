@@ -1,6 +1,7 @@
 import React from "react";
 import "../../stylesheet/order_table.css";
 import { OutlineBtn } from "../components/Buttons";
+import routes from "../components/routes";
 
 const data = new Array(5)
 data.fill({
@@ -30,7 +31,7 @@ return(
         <td className="order-status">{statusCode(data.status)}</td>
         <td className="order-person">{data.person}</td>
         <td className="order-email">{data.email}</td>
-        <td className="order-actions"><OutlineBtn txt="Pokaż" href={"/orders/"+data.id} /></td>
+        <td className="order-actions"><OutlineBtn txt="Pokaż" href={'./'+data.id} /></td>
     </tr>
 )
 }

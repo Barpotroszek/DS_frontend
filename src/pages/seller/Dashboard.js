@@ -1,6 +1,6 @@
 import React from "react";
 import { useAuthContext } from "../hooks/AuthContext";
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import routes from "../components/routes";
 
 const renderList = (e) => {
@@ -9,7 +9,7 @@ const renderList = (e) => {
       {e.map((v) => {
         return (
           <li>
-            <NavLink to={v.href}>{v.txt}</NavLink>
+            <Link to={v.href}>{v.txt}</Link>
           </li>
         );
       })}

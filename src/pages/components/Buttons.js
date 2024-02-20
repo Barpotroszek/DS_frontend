@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 export function PrimaryBtn({txt,  onClick, disabled}){
     return(
@@ -22,9 +23,9 @@ export function OutlineBtn({name, txt, href}){
     if(href)
     
     return(
-        <a style={{color: "unset", textDecoration: "none"}}href={href}>
+        <Link style={{color: "unset", textDecoration: "none"}} to={href}>
         <button className="btn btn-outline-primary">{txt}</button>
-        </a>
+        </Link>
     )
     return(
         <>

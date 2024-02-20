@@ -1,10 +1,10 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 function Card({ key, img, href, title, dostepnosc, price }) {
   const elem = img ? <img src={img} className="img" alt="img"/> : <div className="img">książka</div>
   return (
-    <NavLink to={href} key={key} className="card">
+    <Link to={href} key={key} className="card">
       {elem}
       
       <div className="wrapper ">
@@ -12,7 +12,7 @@ function Card({ key, img, href, title, dostepnosc, price }) {
         <span className="dostepnosc">{dostepnosc}</span>
         <span className="price">{price}</span>
       </div>
-    </NavLink>
+    </Link>
   );
 }
 
