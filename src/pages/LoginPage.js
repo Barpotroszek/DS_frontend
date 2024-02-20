@@ -16,12 +16,12 @@ export default function LoginPage() {
             type="text"
             className="form-control"
             min="1"
-            name="amount"
-            id="amount"
+            name="name"
+            id="name"
             placeholder="0"
             required
           />
-          <label for="amount" className="form-label">
+          <label htmlFor="name" className="form-label">
             Login
           </label>
         </div>
@@ -32,12 +32,12 @@ export default function LoginPage() {
             step="0.01"
             size="2"
             min="1"
-            name="prize"
-            id="prize"
+            name="passwd"
+            id="passwd"
             placeholder="23"
             required
           />
-          <label for="prize" className="form-label">
+          <label htmlFor="passwd" className="form-label">
             Hasło
           </label>
         </div>
