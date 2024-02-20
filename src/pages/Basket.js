@@ -91,8 +91,8 @@ export default function Basket() {
       // eslint-disable-next-line
       dt = d;
       sessionStorage.setItem("basket", JSON.stringify(d));
+      updateList(d);
     } catch {
-      
     }
   }, []);
 
