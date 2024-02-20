@@ -48,7 +48,7 @@
     flex-direction: column;
 }
 
-.dostepnosc {
+.card .dostepnosc {
     /* display: none; */
     font-weight: bolder;
     margin-top: auto;
@@ -60,20 +60,6 @@
     content: "Stan: ";
     font-weight: initial;
 } 
-
-.price{
-    font-size: 120%;
-    font-weight: bolder;
-    /* position: absolute; */
-    /* bottom: 1em; */
-    justify-self: flex-end ;
-    align-self: flex-end;
-/* flex-grow: 1; */
-}
-
-.price::after {
-    content: " zł";
-}
 
 
 .card > .img{
