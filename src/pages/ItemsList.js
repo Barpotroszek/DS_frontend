@@ -64,7 +64,7 @@ export default function ItemsList({seller}) {
   let dt = data;
   const [list, updateList] = useState(dt);
   console.log({seller})
-  
+  // TODO: Kafelki dla klienta; tabelka dla sprzedawcy
   return (
     <div className="">
       <h2 className="topic border-bottom mb-3 w">Lista przedmiotów</h2>
@@ -87,7 +87,6 @@ export default function ItemsList({seller}) {
           {list.map((v, i) => {
             return Tr(v, i + 1, seller);
           })}
-          
            <tr className="table-secondary">
           <td colSpan="6" style={{textAlign: 'end'}}>
             </td>
