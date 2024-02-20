@@ -1,7 +1,6 @@
 import React from "react";
 import "../../stylesheet/order_table.css";
 import { OutlineBtn } from "../components/Buttons";
-import routes from "../components/routes";
 
 const data = new Array(5)
 data.fill({

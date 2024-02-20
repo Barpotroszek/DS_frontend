@@ -88,7 +88,7 @@ export default function ItemsList() {
           })}
           
            <tr className="table-secondary">
-          <td colspan="6" style={{textAlign: 'end'}}>
+          <td colSpan="6" style={{textAlign: 'end'}}>
             </td>
           </tr>
 

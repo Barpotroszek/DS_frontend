@@ -1,7 +1,6 @@
 import React from "react";
 import { useAuthContext } from "../hooks/AuthContext";
 import { Link } from "react-router-dom";
-import routes from "../components/routes";
 
 const renderList = (e) => {
   return (

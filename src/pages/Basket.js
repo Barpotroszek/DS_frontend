@@ -81,12 +81,13 @@ export default function Basket() {
   // feat: Uzupelniane po pobraniu danych z bazy
   let dt = JSON.parse(sessionStorage.getItem("basket"));
   // dt = data;
-  const { basket, setBasket } = useOrderContext();
+  const { setBasket } = useOrderContext();
   useEffect(() => {
     const d = list.filter((v) => {
       return v.id ? v : null;
     });
     console.log({ d });
+    // eslint-disable-next-line 
     dt = d;
     sessionStorage.setItem("basket", JSON.stringify(d));
   }, []);
