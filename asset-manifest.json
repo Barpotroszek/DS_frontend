@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/DS_frontend/static/css/main.f92727ab.chunk.css",
-    "main.js": "/DS_frontend/static/js/main.9aec6f0b.chunk.js",
-    "main.js.map": "/DS_frontend/static/js/main.9aec6f0b.chunk.js.map",
+    "main.js": "/DS_frontend/static/js/main.518e2344.chunk.js",
+    "main.js.map": "/DS_frontend/static/js/main.518e2344.chunk.js.map",
     "runtime-main.js": "/DS_frontend/static/js/runtime-main.a4d0b1eb.js",
     "runtime-main.js.map": "/DS_frontend/static/js/runtime-main.a4d0b1eb.js.map",
     "static/js/2.3742f77a.chunk.js": "/DS_frontend/static/js/2.3742f77a.chunk.js",
@@ -10,7 +10,7 @@
     "static/js/3.0afb56ee.chunk.js": "/DS_frontend/static/js/3.0afb56ee.chunk.js",
     "static/js/3.0afb56ee.chunk.js.map": "/DS_frontend/static/js/3.0afb56ee.chunk.js.map",
     "index.html": "/DS_frontend/index.html",
-    "precache-manifest.1adacf7bebc5b3ddfbc9d5b625c8f083.js": "/DS_frontend/precache-manifest.1adacf7bebc5b3ddfbc9d5b625c8f083.js",
+    "precache-manifest.b6c071cfef0c015709af5eb9c1179832.js": "/DS_frontend/precache-manifest.b6c071cfef0c015709af5eb9c1179832.js",
     "service-worker.js": "/DS_frontend/service-worker.js",
     "static/css/main.f92727ab.chunk.css.map": "/DS_frontend/static/css/main.f92727ab.chunk.css.map",
     "static/js/2.3742f77a.chunk.js.LICENSE.txt": "/DS_frontend/static/js/2.3742f77a.chunk.js.LICENSE.txt",
@@ -21,6 +21,6 @@
     "static/js/runtime-main.a4d0b1eb.js",
     "static/js/2.3742f77a.chunk.js",
     "static/css/main.f92727ab.chunk.css",
-    "static/js/main.9aec6f0b.chunk.js"
+    "static/js/main.518e2344.chunk.js"
   ]
 }
