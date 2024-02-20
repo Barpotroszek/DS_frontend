@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-export function PrimaryBtn({ txt, onClick, disabled }) {
+export function PrimaryBtn({ txt, onClick, disabled=false }) {
   return (
     <button className="btn btn-primary" onClick={onClick} disabled={disabled}>
       {txt}
