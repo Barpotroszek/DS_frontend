@@ -19,17 +19,17 @@ export function SuccessBtn({txt,  onClick, disabled}){
     )
 }
 
-export function OutlineBtn({name, txt, href}){
+export function OutlineBtn({txt, href, disabled}){
     if(href)
     
     return(
-        <Link style={{color: "unset", textDecoration: "none"}} to={href}>
-        <button className="btn btn-outline-primary">{txt}</button>
+        <Link style={{color: "unset", textDecoration: "none"}} to={href} >
+        <button className="btn btn-outline-primary" disabled={disabled}>{txt}</button>
         </Link>
     )
     return(
         <>
-        <button className="btn btn-outline-primary">{txt}</button>
+        <button disabled={disabled} className="btn btn-outline-primary">{txt}</button>
         </>
     )
 }
