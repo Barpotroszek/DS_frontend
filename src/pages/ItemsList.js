@@ -1,13 +1,12 @@
 import React, { useState } from "react";
 // import img from "../zabity_za_prawde.jpg";
-import "../../stylesheet/order_table.css";
-import { OutlineBtn, PrimaryBtn } from "../components/Buttons";
-import SearchBar from "../components/SearchBar";
-import { Link } from "react-router-dom";
+import "../stylesheet/order_table.css";
+import { OutlineBtn, PrimaryBtn } from "./components/Buttons";
+import SearchBar from "./components/SearchBar";
 
 const img=null;
 
-function Tr(d, i) {
+function Tr(d, i, seller) {
   const amount = d.amount;
   return (
     <tr key={i} id={i}>
@@ -15,9 +14,9 @@ function Tr(d, i) {
       <td /*scope="col" */ key="img">
         <img className="img" src={d.img} alt="img"/>
       </td>
-      <td /*scope="col" */ key="title"><Link to={"./"+d.id}>
-      {d.title}</Link></td>
-        
+      <td /*scope="col" */ key="title">
+{d.title}</td>
+        {(seller &&
       <td /*scope="col" */ className="align-items-center" key="amount">
         
         <input
@@ -36,12 +35,13 @@ function Tr(d, i) {
           value={amount}
           disabled={true}
         />
-      </td>
+      </td>)}
       <td /*scope="col" */ key="price" className="price">
         {d.price}
       </td>
       <td className="bin">
-        <OutlineBtn onClick={() => {}} txt={"Aktualizuj"} disabled={true}/>
+        {(seller && <OutlineBtn onClick={() => {}} txt={"Aktualizuj"} disabled={true}/> )}
+        {(!seller && <OutlineBtn href={'./' + d.id} txt={"Szczegóły"} /> )}
       </td>
     </tr>
   );
@@ -50,7 +50,7 @@ function Tr(d, i) {
 const data = new Array(15).fill(
   {
     id: 1,
-    title: "Zabity za prawdę",
+    title: "Zabity za prawdę; Ks. Blachnicki w obozach i więzieniach",
     price: 35.25,
     amount: 0,
     href: "/items/1234",
@@ -59,11 +59,12 @@ const data = new Array(15).fill(
   0, 10
 );
 
-export default function ItemsList() {
+export default function ItemsList({seller}) {
   // feat: Uzupelniane po pobraniu danych z bazy
   let dt = data;
   const [list, updateList] = useState(dt);
-
+  console.log({seller})
+  
   return (
     <div className="">
       <h2 className="topic border-bottom mb-3 w">Lista przedmiotów</h2>
@@ -77,14 +78,14 @@ export default function ItemsList() {
             <th scope="col">#</th>
             <th scope="col">Zdjęcie</th>
             <th scope="col">Tytuł</th>
-            <th scope="col">Ilość</th>
+            {(seller && <th scope="col">Ilość</th>)}
             <th scope="col">Cena</th>
             <th scope="col"></th>
           </tr>
         </thead>
         <tbody>
           {list.map((v, i) => {
-            return Tr(v, i + 1);
+            return Tr(v, i + 1, seller);
           })}
           
            <tr className="table-secondary">

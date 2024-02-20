@@ -15,7 +15,7 @@ import Basket from "./pages/Basket";
 import SubmitOrder from "./pages/SubmitOrder";
 import CreateOrder from "./pages/seller/CreateOrder";
 import OrdersList from "./pages/seller/OrdersList";
-import ItemsList from "./pages/seller/ItemsList";
+import ItemsList from "./pages/ItemsList";
 import OrderDetails from "./pages/seller/OrderDetails";
 import NotFound from "./pages/NotFound";
 
@@ -47,8 +47,8 @@ const App = () => {
           <Route element={<Dashboard />} index path={routes.SELLER.DASHBOARD} />
           {/* <Route path="basket" element={<Basket />} /> */}
           <Route path={routes.ITEMS.ROOT}>
-            <Route index element={<ItemsList />} />
-            <Route path={routes.ITEMS.DETAILS} element={<ItemDetails root={"seller"}/>} />
+            <Route index element={<ItemsList seller/>} />
+            <Route path={routes.ITEMS.DETAILS} element={<ItemDetails seller/>} />
           </Route>
           <Route path={routes.SELLER.ORDERS.MAIN}>
             <Route index element={<OrdersList />} />
