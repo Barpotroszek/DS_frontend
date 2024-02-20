@@ -1,21 +1,17 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useAuthContext } from "../hooks/AuthContext";
 import { NavLink } from "react-router-dom";
 import routes from "./routes";
+import { useOrderContext } from "../hooks/OrderContext";
 
 let urls;
 
 export default function Navbar({ target }) {
   const { userData } = useAuthContext();
+  const { basket } = useOrderContext();
   console.log("TARGET: ", target);
+
   if (!userData) {
-    let basket = JSON.parse(sessionStorage.getItem("basket"));
-    try {
-      basket = basket.length;
-      if (basket <= 0) basket = null;
-    } catch (e) {
-      basket = null;
-    }
     urls = [
       { txt: "Strona główna", id: "main-page", href: routes.CLIENT_MAIN, func: null },
       // { txt: "Status zamówienia", id: "order-status", href: null, func: null },
@@ -24,13 +20,6 @@ export default function Navbar({ target }) {
       { txt: "Zaloguj się", id: "login", href: routes.LOGIN }
     ];
   } else if (userData) {
-    let basket = JSON.parse(sessionStorage.getItem("basket"));
-    try {
-      basket = basket.length;
-      if (basket <= 0) basket = null;
-    } catch (e) {
-      basket = null;
-    }
     urls = [
       { txt: "Panel sprzedawcy", id: "main-page", href: routes.SELLER_DASHBOARD + "/", func: null },
       { txt: "Zamówienia", id: "orders", href: routes.SELLER_ORDERS_MAIN + "/", basket},
@@ -49,7 +38,7 @@ export default function Navbar({ target }) {
         key={item.id}
         // onClick={item.func}
       >
-        <div items-amount={item.basket}>{item.txt}</div>
+        <div items-amount={item.basket?1:0}>{item.txt}</div>
       </NavLink>
     );
   });

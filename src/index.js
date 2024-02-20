@@ -17,8 +17,10 @@ import CreateOrder from "./pages/seller/CreateOrder";
 import OrdersList from "./pages/seller/OrdersList";
 import ItemsList from "./pages/seller/ItemsList";
 import OrderDetails from "./pages/seller/OrderDetails";
-import AuthProvider from "./pages/hooks/AuthContext";
 import NotFound from "./pages/NotFound";
+
+import AuthProvider from "./pages/hooks/AuthContext";
+import OrderProvider from "./pages/hooks/OrderContext";
 
 import { index as routes } from "./pages/components/routes";
 
@@ -26,6 +28,7 @@ const root = ReactDOM.createRoot(document.getElementById("container"));
 
 const App = () => {
   return (
+    <OrderProvider>
     <AuthProvider>
       <Routes>
         <Route element={<ClientRoot />} path={routes.CLIENT.ROOT}>
@@ -61,6 +64,7 @@ const App = () => {
         </Route>
       </Routes>
     </AuthProvider>
+    </OrderProvider>
   );
 };
 

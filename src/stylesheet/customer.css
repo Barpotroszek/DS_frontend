@@ -20,7 +20,7 @@
 
 #basket{position: relative;}
 
-#basket > div[items-amount]::before{
+#basket > div[items-amount="1"]::before{
     /* content: attr(items-amount); */
     content:"";
     background-color: yellow;

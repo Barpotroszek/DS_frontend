@@ -1,6 +1,7 @@
 import React from "react";
 import img from "../zabity_za_prawde.jpg"
 import '../stylesheet/details.css'
+import { useOrderContext } from "./hooks/OrderContext";
 
 function labelDetail(d){
     return (
@@ -10,6 +11,7 @@ function labelDetail(d){
 
 export default function Content({root}){
     // feat: Uzupelniane po pobraniu danych z bazy
+    const { setBasket } = useOrderContext();
     const details_list =[
         {cat_id: "dostepnosc", name:"Dostępność: ", val: "Jest w magazynie"},
         {cat_id: "category", name:"Kategoria: ", val: "x. Blachnicki"},
@@ -37,6 +39,7 @@ export default function Content({root}){
             temp[i].amount += 1;
         console.log(d)
         sessionStorage.setItem("basket", JSON.stringify(temp));
+        setBasket(true)
         alert("Dodano!")
     }
     let btn;

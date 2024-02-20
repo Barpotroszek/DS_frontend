@@ -1,19 +1,11 @@
-import { createContext, useContext, useState } from "react";
-import { Navigate, useNavigate } from "react-router-dom";
+import React, { createContext, useContext, useState } from "react";
 
 const myContex = createContext();
 
 export default function OrderProvider({ children }) {
-  const fakeAuth = () =>
-    new Promise((resolve) => {
-      setTimeout(() => resolve("23456789"), 250);
-    });
-
-  const [userData, setData] = useState(null);
-  const nav = useNavigate();
-
-  const value = {
-    userData
+  const [basket, setBasket] = useState(JSON.parse(sessionStorage.getItem("basket")).length),
+   value = {
+    basket, setBasket
   };
 
   return <myContex.Provider value={value}>{children}</myContex.Provider>;

@@ -1,17 +1,18 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import img from "../zabity_za_prawde.jpg";
 import "../stylesheet/order_table.css";
 import { OutlineDangerBtn, PrimaryBtn } from "./components/Buttons";
 import { Link } from "react-router-dom";
 import routes from "./components/routes";
+import { useOrderContext } from "./hooks/OrderContext";
 
 function Tr(d, i, f, updateAmount) {
   const amount = d.amount;
   const updateAmountMid = (v) => {
-    if (v < 0) v = 0;
+    if (v < 1) v = 1;
     updateAmount(i - 1, v);
   };
-
+  if (!d.id) return;
   const handleChange = (e) => updateAmountMid(Number(e.target.value));
 
   return (
@@ -20,9 +21,10 @@ function Tr(d, i, f, updateAmount) {
       <td /*scope="col" */ key="img">
         <img className="img" src={d.img} alt="preview" />
       </td>
-      <td /*scope="col" */ key="title"><Link to={"/items/"+d.id}>
-      {d.title}</Link></td>
-        
+      <td /*scope="col" */ key="title">
+        <Link to={"/items/" + d.id}>{d.title}</Link>
+      </td>
+
       <td /*scope="col" */ className="align-items-center" key="amount">
         <button
           className="amount-btn"
@@ -56,7 +58,7 @@ function Tr(d, i, f, updateAmount) {
         {d.price}
       </td>
       <td className="bin">
-        <OutlineDangerBtn onClick={() => f(i)} txt={"Usuń z koszyka"}/>
+        <OutlineDangerBtn onClick={() => f(i)} txt={"Usuń z koszyka"} />
       </td>
     </tr>
   );
@@ -78,7 +80,17 @@ let data = new Array(5).fill(
 export default function Basket() {
   // feat: Uzupelniane po pobraniu danych z bazy
   let dt = JSON.parse(sessionStorage.getItem("basket"));
-    // dt = data;
+  // dt = data;
+  const { basket, setBasket } = useOrderContext();
+  useEffect(() => {
+    const d = list.filter((v) => {
+      return v.id ? v : null;
+    });
+    console.log({ d });
+    dt = d;
+    sessionStorage.setItem("basket", JSON.stringify(d));
+  }, []);
+
   const [list, updateList] = useState(dt);
 
   const updateListMid = (i, v) => {
@@ -103,6 +115,7 @@ export default function Basket() {
     console.log("To delete: ", nr);
     let received = list.filter((v, i) => {
       if (nr - 1 !== i) {
+        setBasket(true);
         return v;
       }
       return null;
@@ -134,26 +147,35 @@ export default function Basket() {
         <tbody>
           {list.map((v, i) => {
             sum += v.price * v.amount;
-            console.log(v)
+            console.log(v);
             return Tr(v, i + 1, filterList, updateListMid);
           })}
-          
-           <tr className="table-secondary">
-          <td colspan="6" style={{textAlign: 'end'}}>
-             {/*   Razem:
+
+          <tr className="table-secondary">
+            <td colSpan="6" style={{ textAlign: "end" }}>
+              {/*   Razem:
             </td>
             <td className="price">{sum}</td>
             <td> 
             */}
             </td>
           </tr>
-
         </tbody>
       </table>
 
-      <span className="mw" style={{ display: "grid", justifyContent: "end", gap: ".7em" }}>
-        <span className="price" style={{fontSize: "x-large", marginRight: ".5em"}}>{sum}</span>
-        <Link to={routes.CLIENT_SUBMIT_ORDER}><PrimaryBtn txt="Złóż zamówienie"/></Link>
+      <span
+        className="mw"
+        style={{ display: "grid", justifyContent: "end", gap: ".7em" }}
+      >
+        <span
+          className="price"
+          style={{ fontSize: "x-large", marginRight: ".5em" }}
+        >
+          {sum}
+        </span>
+        <Link to={routes.CLIENT_SUBMIT_ORDER}>
+          <PrimaryBtn txt="Złóż zamówienie" />
+        </Link>
       </span>
     </div>
   );
