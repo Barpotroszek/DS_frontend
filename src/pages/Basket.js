@@ -79,25 +79,28 @@ let data = new Array(5).fill(
 
 export default function Basket() {
   // feat: Uzupelniane po pobraniu danych z bazy
-  let dt = JSON.parse(sessionStorage.getItem("basket"));
+  let dt = Array.from(JSON.parse(sessionStorage.getItem("basket")));
   // dt = data;
+  const [list, updateList] = useState(dt);
   const { setBasket } = useOrderContext();
   useEffect(() => {
-    const d = list.filter((v) => {
-      return v.id ? v : null;
-    });
-    // eslint-disable-next-line 
-    dt = d;
-    sessionStorage.setItem("basket", JSON.stringify(d));
+    try {
+      const d = list.filter((v) => {
+        return v.id ? v : null;
+      });
+      // eslint-disable-next-line
+      dt = d;
+      sessionStorage.setItem("basket", JSON.stringify(d));
+    } catch {
+      
+    }
   }, []);
 
-  const [list, updateList] = useState(dt);
-
-  useEffect(()=>{
+  useEffect(() => {
     console.log("Updating storage");
     sessionStorage.setItem("basket", JSON.stringify(list));
-    setBasket(list.length > 0)
-  },[list])
+    setBasket(list.length > 0);
+  }, [list]);
 
   const updateListMid = (i, v) => {
     let temp = list;
@@ -111,7 +114,7 @@ export default function Basket() {
     updateList([...data]);
     // window.location.reload()
     // console.log(data);
-  }
+  };
 
   if (dt === null || dt.length === 0)
     return (
@@ -158,21 +161,20 @@ export default function Basket() {
           })}
 
           <tr className="table-secondary">
-            <td colSpan="6" style={{ textAlign: "end" }}>
-            </td>
+            <td colSpan="6" style={{ textAlign: "end" }}></td>
           </tr>
         </tbody>
       </table>
 
       <span
         className="mw"
-        style={{ display: "grid", justifyItems: "end", gap: ".7em", }}
+        style={{ display: "grid", justifyItems: "end", gap: ".7em" }}
       >
         <span
           className="price"
           style={{ fontSize: "x-large", marginRight: ".5em" }}
         >
-          { (Math.round(sum*100) / 100).toFixed(2) }
+          {(Math.round(sum * 100) / 100).toFixed(2)}
         </span>
         <Link to={routes.CLIENT_SUBMIT_ORDER}>
           <PrimaryBtn txt="Złóż zamówienie" />
