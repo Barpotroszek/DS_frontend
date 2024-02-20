@@ -2,3 +2,4 @@ node_modules
 .vscode
 structures
 templates
+build
