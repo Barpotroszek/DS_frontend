@@ -96,8 +96,7 @@ export default function ItemsList() {
       </table>
       </div>
     </div>
-      <span className="mw" style={{ display: "grid", justifyContent: "end", gap: ".7em" }}>
-        {/* <span className="price" style={{fontSize: "x-large", marginRight: ".5em"}}>{sum}</span> */}
+      <span className="mw" style={{ display: "grid", justifyItems: "end", gap: ".7em" }}>
         <a href="/submit"><PrimaryBtn txt="Podsumowanie"/></a>
       </span>
       </div>

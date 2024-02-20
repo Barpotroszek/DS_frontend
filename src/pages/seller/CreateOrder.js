@@ -182,11 +182,6 @@ export default function CreateOrder(){
           
            <tr className="table-secondary">
           <td colSpan="6" style={{textAlign: 'end'}}>
-             {/*   Razem:
-            </td>
-            <td className="price">{sum}</td>
-            <td> 
-            */}
             </td>
           </tr>
 

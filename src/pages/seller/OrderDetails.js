@@ -146,11 +146,6 @@ export default function Content() {
 
           <tr className="table-secondary">
             <td colSpan="6" style={{ textAlign: "end" }}>
-              {/*   Razem:
-            </td>
-            <td className="price">{sum}</td>
-            <td> 
-            */}
             </td>
           </tr>
         </tbody>
@@ -158,13 +153,13 @@ export default function Content() {
 
       <span
         className="mw"
-        style={{ display: "grid", justifyContent: "end", gap: ".7em" }}
+        style={{ display: "grid", justifyItems: "end", gap: ".7em" }}
       >
         <span
           className="price"
           style={{ fontSize: "x-large", marginRight: ".5em" }}
         >
-          {sum}
+          { (Math.round(sum*100) / 100).toFixed(2) }
         </span>
 
         <PrimaryBtn txt="Powiadom odbiorcę" disabled={!(notify&&!placeOrder)} onClick={()=>{updatePlaceOrder(true)}} />
