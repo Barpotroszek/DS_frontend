@@ -108,7 +108,7 @@ header {
     color: var(--light-font) !important;
     padding: .5em 1em;
     font-size: 2em;
-    height: 10rem;
+    max-height: 10rem;
 
     display: grid;
     grid-template-columns: auto 1fr;
@@ -119,7 +119,7 @@ header {
 }
 
 header>img {
-    height: 8rem;
+    height: 5rem;
 }
 
 nav {
