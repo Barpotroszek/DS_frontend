@@ -79,7 +79,10 @@ let data = new Array(5).fill(
 
 export default function Basket() {
   // feat: Uzupelniane po pobraniu danych z bazy
-  let dt = Array.from(JSON.parse(sessionStorage.getItem("basket")));
+  let dt = [];
+  try {
+    dt = Array.from(JSON.parse(sessionStorage.getItem("basket")));
+  } catch {}
   // dt = data;
   const [list, updateList] = useState(dt);
   const { setBasket } = useOrderContext();
@@ -92,8 +95,7 @@ export default function Basket() {
       dt = d;
       sessionStorage.setItem("basket", JSON.stringify(d));
       updateList(d);
-    } catch {
-    }
+    } catch {}
   }, []);
 
   useEffect(() => {
