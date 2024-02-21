@@ -1,26 +1,26 @@
 {
   "files": {
-    "main.css": "/DS_frontend/static/css/main.f92727ab.chunk.css",
-    "main.js": "/DS_frontend/static/js/main.518e2344.chunk.js",
-    "main.js.map": "/DS_frontend/static/js/main.518e2344.chunk.js.map",
+    "main.css": "/DS_frontend/static/css/main.e9782b0b.chunk.css",
+    "main.js": "/DS_frontend/static/js/main.becb07c9.chunk.js",
+    "main.js.map": "/DS_frontend/static/js/main.becb07c9.chunk.js.map",
     "runtime-main.js": "/DS_frontend/static/js/runtime-main.a4d0b1eb.js",
     "runtime-main.js.map": "/DS_frontend/static/js/runtime-main.a4d0b1eb.js.map",
-    "static/js/2.3742f77a.chunk.js": "/DS_frontend/static/js/2.3742f77a.chunk.js",
-    "static/js/2.3742f77a.chunk.js.map": "/DS_frontend/static/js/2.3742f77a.chunk.js.map",
+    "static/js/2.dcf2f5c8.chunk.js": "/DS_frontend/static/js/2.dcf2f5c8.chunk.js",
+    "static/js/2.dcf2f5c8.chunk.js.map": "/DS_frontend/static/js/2.dcf2f5c8.chunk.js.map",
     "static/js/3.0afb56ee.chunk.js": "/DS_frontend/static/js/3.0afb56ee.chunk.js",
     "static/js/3.0afb56ee.chunk.js.map": "/DS_frontend/static/js/3.0afb56ee.chunk.js.map",
     "index.html": "/DS_frontend/index.html",
-    "precache-manifest.b6c071cfef0c015709af5eb9c1179832.js": "/DS_frontend/precache-manifest.b6c071cfef0c015709af5eb9c1179832.js",
+    "precache-manifest.2461cee6db66d081ff0ab39179ae017d.js": "/DS_frontend/precache-manifest.2461cee6db66d081ff0ab39179ae017d.js",
     "service-worker.js": "/DS_frontend/service-worker.js",
-    "static/css/main.f92727ab.chunk.css.map": "/DS_frontend/static/css/main.f92727ab.chunk.css.map",
-    "static/js/2.3742f77a.chunk.js.LICENSE.txt": "/DS_frontend/static/js/2.3742f77a.chunk.js.LICENSE.txt",
+    "static/css/main.e9782b0b.chunk.css.map": "/DS_frontend/static/css/main.e9782b0b.chunk.css.map",
+    "static/js/2.dcf2f5c8.chunk.js.LICENSE.txt": "/DS_frontend/static/js/2.dcf2f5c8.chunk.js.LICENSE.txt",
     "static/media/notFound.css": "/DS_frontend/static/media/glass.df4ca9d0.png",
     "static/media/zabity_za_prawde.jpg": "/DS_frontend/static/media/zabity_za_prawde.4fcb4f47.jpg"
   },
   "entrypoints": [
     "static/js/runtime-main.a4d0b1eb.js",
-    "static/js/2.3742f77a.chunk.js",
-    "static/css/main.f92727ab.chunk.css",
-    "static/js/main.518e2344.chunk.js"
+    "static/js/2.dcf2f5c8.chunk.js",
+    "static/css/main.e9782b0b.chunk.css",
+    "static/js/main.becb07c9.chunk.js"
   ]
 }
