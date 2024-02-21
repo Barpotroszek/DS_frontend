@@ -22,7 +22,7 @@ import NotFound from "./pages/NotFound";
 import AuthProvider from "./pages/hooks/AuthContext";
 import OrderProvider from "./pages/hooks/OrderContext";
 
-import { index as routes } from "./pages/components/routes";
+import { index as routes } from "./routes";
 
 const root = ReactDOM.createRoot(document.getElementById("container"));
 

@@ -3,7 +3,7 @@ import img from "../zabity_za_prawde.jpg";
 import "../stylesheet/order_table.css";
 import { OutlineDangerBtn, PrimaryBtn, TestButton } from "./components/Buttons";
 import { Link } from "react-router-dom";
-import routes from "./components/routes";
+import routes from "../routes";
 import { useOrderContext } from "./hooks/OrderContext";
 
 function Tr(d, i, f, updateAmount) {

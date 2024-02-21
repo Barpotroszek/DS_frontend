@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useAuthContext } from "../hooks/AuthContext";
 import { NavLink } from "react-router-dom";
-import routes from "./routes";
+import routes from "../../routes";
 import { useOrderContext } from "../hooks/OrderContext";
 
 let urls;

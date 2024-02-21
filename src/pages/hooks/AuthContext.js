@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
 import { Navigate, useLocation, useNavigate } from "react-router-dom";
-import routes from "../components/routes";
+import routes from "../../routes";
 
 const myContex = createContext(),
   // defaultUser = { name: "Bartek", token: "123456"};
