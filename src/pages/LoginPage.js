@@ -10,7 +10,7 @@ export default function LoginPage() {
   return (
     <>
       <h2 className="topic border-bottom">Strona logowania</h2>
-      <form onSubmit={handleLogin} className="mx-2 my-3 w-50 " style={{alignSelf: "center"}}>
+      <form onSubmit={handleLogin} className="mx-2 my-3 w-50 d-flex flex-column" style={{alignSelf: "center"}}>
         <div className="form-floating mb-2">
           <input
             type="text"
