@@ -36,7 +36,7 @@ export default function Navbar({ target }) {
         to={item.href}
         id={item.id}
         key={item.id}
-        // onClick={item.func}
+        onClick={()=>{try{document.querySelector(".show").classList.remove("show")}catch{}}}
       >
         <div items-amount={item.basket?1:0}>{item.txt}</div>
       </NavLink>
