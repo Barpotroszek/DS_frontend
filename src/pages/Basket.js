@@ -176,7 +176,7 @@ export default function Basket() {
           className="price"
           style={{ fontSize: "x-large", marginRight: ".5em" }}
         >
-          {(Math.round(sum * 100) / 100).toFixed(2)}
+          Razem: {(Math.round(sum * 100) / 100).toFixed(2)}
         </span>
         <Link to={routes.CLIENT_SUBMIT_ORDER}>
           <PrimaryBtn txt="Złóż zamówienie" />
