@@ -5,6 +5,7 @@ import '../stylesheet/cards.css'
 import { OutlineBtn, PrimaryBtn } from "./components/Buttons";
 import SearchBar from "./components/SearchBar";
 import BookCards from "./components/BookCards";
+import routes from "../routes"
 
 const img = null;
 
@@ -39,7 +40,7 @@ function Tr(d, i) {
         {d.price}
       </td>
       <td className="bin">
-        <OutlineBtn onClick={() => {}} txt={"Aktualizuj"} disabled={true} />
+        <OutlineBtn onClick={() => {}} txt={"Aktualizuj"} href={"./update"} />
       </td>
     </tr>
   );

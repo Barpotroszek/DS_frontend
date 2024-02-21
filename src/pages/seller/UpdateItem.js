@@ -18,30 +18,29 @@ export default function UpdateItem({}) {
   console.log(categories);
 
   return (
-    <div className="updateItem" >
-      <h2 className="topic">Dodawanie artykułu</h2>
-      <form style={{padding:"2em"}} >
+    <div className="updateItem">
+      <h2 className="topic border-bottom">Dodawanie artykułu</h2>
+      <div className="wrapper">
         <div className="img">
           <img alt="Miejsce na zdjęcie" />
-          <button className="btn btn-secondary">
+          <button className="btn btn-secondary" onClick={() => {}}>
             Dodaj/aktualizuj zdjęcie
           </button>
         </div>
 
-        <ul>
-          <li className="form-floating">
-            <input
-              type="text"
-              className="form-control"
-              name="title"
-              id="title"
-              placeholder="Zabity za prawdę..."
-              required
-            />
-            <label htmlFor="title">Tytuł:</label>
-          </li>
-
-          <div className="d-flex  g-1" style={{gap: ".5em"}}>
+        <form>
+          <ul>
+            <li className="form-floating">
+              <input
+                type="text"
+                className="form-control"
+                name="title"
+                id="title"
+                placeholder="Zabity za prawdę..."
+                required
+              />
+              <label htmlFor="title">Tytuł:</label>
+            </li>
             <li className="form-floating col-md">
               <select
                 className="form-select"
@@ -62,58 +61,60 @@ export default function UpdateItem({}) {
                 Kategoria:
               </label>
             </li>
-            <li className="form-floating col-sm">
-              <input
-                type="number"
+            <div className="d-flex  g-1" style={{ gap: "1.5em" }}>
+              <li className="form-floating col-sm">
+                <input
+                  type="number"
+                  className="form-control"
+                  size="2"
+                  min="1"
+                  name="amount"
+                  id="amount"
+                  placeholder="0"
+                  required
+                />
+                <label htmlFor="amount" className="form-label">
+                  Liczba sztuk:
+                </label>
+              </li>
+              <li className="form-floating col-sm">
+                <input
+                  type="number"
+                  className="form-control"
+                  step="0.01"
+                  size="2"
+                  min="1"
+                  name="prize"
+                  id="prize"
+                  placeholder="23"
+                  required
+                />
+                <label htmlFor="prize" className="form-label">
+                  Cena (zł):
+                </label>
+              </li>
+            </div>
+            <li className="form-floating">
+              <textarea
                 className="form-control"
-                size="2"
-                min="1"
-                name="amount"
-                id="amount"
-                placeholder="0"
-                required
-              />
-              <label htmlFor="amount" className="form-label">
-                Liczba sztuk:
-              </label>
+                id="description"
+                name="description"
+                rows="3"
+                placeholder="..."
+              ></textarea>
+              <label htmlFor="description">Opis:</label>
             </li>
-            <li className="form-floating col-sm">
-              <input
-                type="number"
-                className="form-control"
-                step="0.01"
-                size="2"
-                min="1"
-                name="prize"
-                id="prize"
-                placeholder="23"
-                required
-              />
-              <label htmlFor="prize" className="form-label">
-                Cena (zł):
-              </label>
-            </li>
-          </div>
-          <li className="form-floating">
-            <textarea
-              className="form-control"
-              id="description"
-              name="description"
-              rows="3"
-              placeholder="..."
-            ></textarea>
-            <label htmlFor="description">Opis:</label>
-          </li>
-          <div
-            className="mw"
-            style={{ display: "grid", justifyContent: "end" }}
-          >
-            <button className="btn btn-primary mb-1" disabled>
-              Dodaj/aktualizuj pozycję
-            </button>
-          </div>
-        </ul>
-      </form>
+            <div
+              className="mw"
+              style={{ display: "grid", justifyContent: "end" }}
+            >
+              <button className="btn btn-primary mb-1" disabled>
+                Dodaj/aktualizuj pozycję
+              </button>
+            </div>
+          </ul>
+        </form>
+      </div>
     </div>
   );
 }
