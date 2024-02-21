@@ -15,7 +15,10 @@ li {
     margin-bottom: .5em;
 }
 
-li::marker{
+/* ! Konsultacja: czy zostawiamy kropeczki przy linkach navbar czy nie?
+    tak -> zostawić
+    nie -> usunąć .updateItem poniżej */
+.updateItem li::marker{
     content: "";
     margin: 0;
 }

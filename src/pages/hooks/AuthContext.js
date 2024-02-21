@@ -1,33 +1,40 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
 import { Navigate, useLocation, useNavigate } from "react-router-dom";
 import routes from "../../routes";
+import Loading from "../components/Loading";
 
 const myContex = createContext(),
   // defaultUser = { name: "Bartek", token: "123456"};
   defaultUser = null,
   KEY = "user-credentials",
-  fakeAuth = () =>
+  fakeAuth = (creds) =>
     new Promise((resolve) => {
-      setTimeout(() => resolve("23456789"), 250);
+      setTimeout(() => resolve("12345678"), 2500);
     });
 
 export default function AuthProvider({ children }) {
   const [userData, setCredentials] = useState(defaultUser),
-  location = useLocation();
+    [ifLoadedCreds, setLoadedCreds] = useState(false),
+    location = useLocation();
 
-  const validateUser = () => {
-    const d = sessionStorage.getItem(KEY);
+  const updateCreds = () => {
+    let creds = {};
     try {
-      setCredentials(JSON.parse(d));
-    } catch {} 
-    finally {
-      // if(location.state?.from?.pathname ){
-        // alert("Redirect")
-        nav(location.state?.from?.pathname)
-      // }  
-  }};
+      creds = JSON.parse(sessionStorage.getItem(KEY));
+    } catch (error) {}
+    fakeAuth(creds).then((token) => {
+      creds.token = token;
+      setCredentials({...creds})
+      setLoadedCreds(true);
+    })
+    .catch(()=>{
+      setCredentials(null);
+      setLoadedCreds(true);
+    });
+  };
 
-  useEffect(validateUser, []);
+  useEffect(updateCreds, []);
+
 
   const midSetCredentials = (c) => {
     sessionStorage.setItem(KEY, JSON.stringify(c));
@@ -53,6 +60,8 @@ export default function AuthProvider({ children }) {
     handleLogout,
   };
 
+  if(!ifLoadedCreds)
+   return <Loading />;
   return <myContex.Provider value={value}>{children}</myContex.Provider>;
 }
 
@@ -69,9 +78,9 @@ const redirectUnauthorized = () => {
 
 const ProtectedPage = ({ children }) => {
   const { userData } = useAuthContext(),
-  loc = useLocation();
-  if (!userData){
-    return <Navigate to={routes.CLIENT_MAIN} state={{from: loc}}/>;
+    loc = useLocation();
+  if (!userData) {
+    return <Navigate to={routes.CLIENT_MAIN} state={{ from: loc }} />;
   }
   return children;
 };
