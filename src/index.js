@@ -23,6 +23,7 @@ import AuthProvider from "./pages/hooks/AuthContext";
 import OrderProvider from "./pages/hooks/OrderContext";
 
 import { index as routes } from "./routes";
+import UpdateItem from "./pages/seller/UpdateItem";
 
 const root = ReactDOM.createRoot(document.getElementById("container"));
 
@@ -49,6 +50,7 @@ const App = () => {
           <Route path={routes.ITEMS.ROOT}>
             <Route index element={<ItemsList seller/>} />
             <Route path={routes.ITEMS.DETAILS} element={<ItemDetails seller/>} />
+            <Route path={routes.ITEMS.UPDATE} element={<UpdateItem />} />
           </Route>
           <Route path={routes.SELLER.ORDERS.MAIN}>
             <Route index element={<OrdersList />} />
