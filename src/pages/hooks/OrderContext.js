@@ -8,9 +8,9 @@ export default function OrderProvider({ children }) {
       basket,
       setBasket,
     };
-  try {
-    useState(sessionStorage.getItem("basket").length);
-  } catch {}
+
+useState(()=>{
+   try{setBasket(sessionStorage.getItem("basket").length);} catch {}}, [])
 
   return <myContex.Provider value={value}>{children}</myContex.Provider>;
 }
