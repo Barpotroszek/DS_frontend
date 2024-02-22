@@ -1,6 +1,7 @@
 import React from "react";
 import "../../stylesheet/order_table.css";
 import { OutlineBtn } from "../components/Buttons";
+import routes from "../../routes";
 
 const data = new Array(5)
 data.fill({
@@ -40,6 +41,9 @@ export default function Content() {
   return (
     <div className="OrdersList">
       <h2 className="topic border-bottom mb-3">Lista zamówień</h2>
+      <div className="m-2">
+      <OutlineBtn txt="Stwórz nowe zamówienie" href={routes.SELLER_ORDER_CREATE}/>
+      </div>
       <table className="table table-bordered table-striped table-hover">
         <thead className="table-secondary">
           <tr>

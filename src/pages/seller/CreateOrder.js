@@ -1,20 +1,23 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import { PrimaryBtn, OutlineBtn } from "../components/Buttons";
 import api_req from "../hooks/api";
 import { Navigate as nav } from "react-router-dom";
 
+const markText = (e) =>{
+  e.target.select()
+}
 
 function Tr(d, i, f, updateAmount) {
   const amount = d.amount;
   d.id = i;
   const updateAmountMid = (v) => {
-    if (v < 0) v = 0
+    if (v < 0) v = 0;
     updateAmount(i - 1, v);
   };
 
   const handleChange = (e) => {
-    updateAmountMid(Number(e.target.value))
-};
+    updateAmountMid(Number(e.target.value));
+  };
 
   return (
     <tr key={i} id={i}>
@@ -22,9 +25,10 @@ function Tr(d, i, f, updateAmount) {
       <td /*scope="col" */ key="img">
         <img className="img" src={d.img} />
       </td>
-      <td /*scope="col" */ key="title"><a href={"/details/"+d.id}>
-      {d.title}</a></td>
-        
+      <td /*scope="col" */ key="title">
+        <a href={"/details/" + d.id}>{d.title}</a>
+      </td>
+
       <td /*scope="col" */ className="align-items-center" key="amount">
         <button
           className="amount-btn"
@@ -42,6 +46,7 @@ function Tr(d, i, f, updateAmount) {
           type="number"
           name="id_amount"
           onChange={handleChange}
+          onClick={markText}
           id=""
           min={0}
           max={20}
@@ -72,21 +77,24 @@ const data = new Array([
     amount: 0,
     href: "/details/1234",
     img: null,
-  },{
+  },
+  {
     id: 2,
     title: "Zabity za prawdę",
     price: 35.25,
     amount: 0,
     href: "/details/1234",
     img: null,
-  },{
+  },
+  {
     id: 3,
     title: "Zabity za prawdę",
     price: 35.25,
     amount: 0,
     href: "/details/1234",
     img: null,
-  },{
+  },
+  {
     id: 4,
     title: "Zabity za prawdę",
     price: 35.25,
@@ -94,43 +102,43 @@ const data = new Array([
     href: "/details/1234",
     img: null,
   },
-]
-)[0];
+])[0];
 
-
-function submit(){
+function submit() {
   const name = document.getElementById("name").value,
     email = document.getElementById("email").value | null,
-     parsed_basket = JSON.parse(sessionStorage.getItem("basket")),
-    
+    parsed_basket = JSON.parse(sessionStorage.getItem("basket")),
     data = {
-      name, email,
-      parsed_basket
+      name,
+      email,
+      parsed_basket,
     };
 
-  const resp = api_req(data)
-  if(resp.status === 200)
-    nav("/orders/"+resp.id)
+  const resp = api_req(data);
+  if (resp.status === 200) nav("/orders/" + resp.id);
 }
 
-export default function CreateOrder(){
+export default function CreateOrder() {
   const [list, updateList] = useState(data);
-  console.log({list})
+  console.log({ list });
   const updateListMid = (i, v) => {
     let temp = list;
-    console.log({i, v})
+    console.log({ i, v });
     temp[i].amount = v;
-    console.log({temp})
-    console.log({temp, list})
+    console.log({ temp });
+    console.log({ temp, list });
     updateList([...temp]);
     sessionStorage.setItem("basket", JSON.stringify(temp));
   };
   let sum = 0;
 
-    return(
-    <>        
+  return (
+    <>
       <h2 className="topic border-bottom">Tworzenie zamówienia</h2>
-      <form className="mx-2 my-2 w-100 d-flex flex-row justify-content-between" style={{alignSelf: "center"}}>
+      <form
+        className="mx-2 my-2 w-100 d-flex flex-row justify-content-between"
+        style={{ alignSelf: "center" }}
+      >
         <div className="form-floating mx-3 col">
           <input
             type="text"
@@ -145,7 +153,7 @@ export default function CreateOrder(){
             Zamawiający
           </label>
           <div className="form-text px-2">*Pole obowiązkowe</div>
-        </div> 
+        </div>
         <div className="form-floating col mx-3">
           <input
             type="text"
@@ -179,19 +187,19 @@ export default function CreateOrder(){
             v.id = i;
             return Tr(v, i + 1, null, updateListMid);
           })}
-          
-           <tr className="table-secondary">
-          <td colSpan="6" style={{textAlign: 'end'}}>
-            </td>
-          </tr>
 
+          <tr className="table-secondary">
+            <td colSpan="6" style={{ textAlign: "end" }}></td>
+          </tr>
         </tbody>
       </table>
 
-
-        <span className="mw mt-4 " style={{display: "grid", justifyContent: 'end'}}>
-                    <PrimaryBtn type="submit"  txt="Złóż zamówienie" />
-                </span>
-
-    </>    )
+      <span
+        className="mw mt-4 "
+        style={{ display: "grid", justifyContent: "end" }}
+      >
+        <PrimaryBtn type="submit" txt="Stwórz zamówienie" onClick={()=>alert("Zamówienie stworzone... itp")} />
+      </span>
+    </>
+  );
 }
