@@ -6,23 +6,29 @@ import { Link } from "react-router-dom";
 import routes from "../routes";
 import { useOrderContext } from "./hooks/OrderContext";
 
+const markText = (e) =>{
+  e.target.select()
+}
+
 function Tr(d, i, f, updateAmount) {
-  const amount = d.amount;
+  const amount = d[3];
   const updateAmountMid = (v) => {
     if (v < 1) v = 1;
     updateAmount(i - 1, v);
   };
-  if (!d.id) return;
-  const handleChange = (e) => updateAmountMid(Number(e.target.value));
-
+  if (!d[0]) return;
+  const handleChange = (e) => {
+    if(e.target.value == null)return;
+     updateAmountMid(Number(e.target.value))};
+  
   return (
     <tr key={i} id={i}>
       <td /*scope="row" */ key="nr">{i}</td>
       <td /*scope="col" */ key="img">
-        <img className="img" src={d.img} alt="preview" />
+        <img className="img" src={d[5] || ''} alt="preview" />
       </td>
       <td /*scope="col" */ key="title">
-        <Link to={"/items/" + d.id}>{d.title}</Link>
+        <Link to={"/items/" + d.id}>{d[1]}</Link>
       </td>
 
       <td /*scope="col" */ className="align-items-center" key="amount">
@@ -42,7 +48,7 @@ function Tr(d, i, f, updateAmount) {
           type="number"
           name="id_amount"
           onChange={handleChange}
-          id=""
+          onClick={markText}
           min={0}
           max={20}
           value={amount}
@@ -55,7 +61,7 @@ function Tr(d, i, f, updateAmount) {
         </button>
       </td>
       <td /*scope="col" */ key="price" className="price">
-        {d.price}
+        {d[2]}
       </td>
       <td className="bin">
         <OutlineDangerBtn onClick={() => f(i)} txt={"Usuń z koszyka"} />
@@ -65,14 +71,13 @@ function Tr(d, i, f, updateAmount) {
 }
 
 let data = new Array(5).fill(
-  {
-    id: 1,
-    title: "Zabity za prawdę",
-    price: 35.25,
-    amount: 2,
-    href: "/details/1234",
-    img,
-  },
+  [
+    1,
+    "Zabity za prawdę",
+    35.25,
+    2,
+    "/details/1234"
+  ],
   0,
   10
 );
@@ -89,7 +94,7 @@ export default function Basket() {
   useEffect(() => {
     try {
       const d = list.filter((v) => {
-        return v.id ? v : null;
+        return v[0] ? v : null;
       });
       // eslint-disable-next-line
       dt = d;
@@ -106,7 +111,7 @@ export default function Basket() {
 
   const updateListMid = (i, v) => {
     let temp = list;
-    temp[i].amount = v;
+    temp[i][3] = v;
     updateList([...temp]);
   };
   let sum = 0;
@@ -144,7 +149,7 @@ export default function Basket() {
   return (
     <div className="Basket">
       <h2 className="topic border-bottom mb-3">Koszyk</h2>
-      <table className="table table-bordered table-striped table-hover">
+      <table className="table table-bordered table-striped table-hover" >
         <thead className="table-secondary">
           <tr>
             <th scope="col">#</th>
@@ -158,7 +163,7 @@ export default function Basket() {
 
         <tbody>
           {list.map((v, i) => {
-            sum += v.price * v.amount;
+            sum += v[2] * v[3];
             return Tr(v, i + 1, filterList, updateListMid);
           })}
 

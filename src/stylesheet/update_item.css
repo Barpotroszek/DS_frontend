@@ -41,7 +41,7 @@ ul > .row {
 
 img[src=""], img:not([src]){
     border: 2px solid black;
-    width: 11em;
+    max-width: 11em;
 }
 
 .img > .btn{width: max-content;}

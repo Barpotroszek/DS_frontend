@@ -285,3 +285,7 @@ animation: loading-moving 3s ease-in-out infinite;
 }
 
 iframe{display: none !important;}
+
+table tr > * {
+    vertical-align: middle;
+}
