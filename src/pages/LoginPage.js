@@ -4,8 +4,6 @@ import { PrimaryBtn } from "./components/Buttons";
 
 export default function LoginPage() {
 
-    // TODO: Zapisać wszelkie TOKENy itp do SessionStorage i 
-    // TODO: odczytywać je przy kolejnych weryfikacjach(patrz na dole)
   const { handleLogin } = useAuthContext();
   const [btnState, updateBtnState] = useState(false);
   return (

@@ -71,7 +71,6 @@ export default function ItemsList({ seller }) {
         <div className="mx-2 ">
           {(seller && <OutlineBtn txt="Dodaj nowy produkt" href={routes.SELLER_UPDATE_ITEM}/>)}
           <SearchBar className="mb-3" />
-          {/* TODO: Tutaj postawić przycisk "Dodaj nowy artykuł" */}
           {(!seller && <BookCards cards={data} />)}
 
           {seller && (

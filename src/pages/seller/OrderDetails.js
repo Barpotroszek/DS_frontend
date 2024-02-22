@@ -50,7 +50,6 @@ let data = new Array(3).fill(
 export default function Content() {
   const list = data;
   const [btns, btnsState] = useState(Array(list.length).fill(false)),
-    // TODO: Aktualizowanie tego stanu
 
   [notify, updateNotify] = useState(false),
   [placeOrder, updatePlaceOrder] = useState(false);
