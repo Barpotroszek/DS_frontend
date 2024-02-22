@@ -40,7 +40,7 @@ function Tr(d, i) {
         {d.price}
       </td>
       <td className="bin">
-        <OutlineBtn onClick={() => {}} txt={"Aktualizuj"} href={"./update/" +d.id} />
+        <OutlineBtn onClick={() => {}} txt={"Aktualizuj"} href={routes.SELLER_UPDATE_ITEM + '/' +d.id} />
       </td>
     </tr>
   );
@@ -64,13 +64,12 @@ export default function ItemsList({ seller }) {
   // feat: Uzupelniane po pobraniu danych z bazy
   let dt = data;
   const [list, updateList] = useState(dt);
-  // TODO: Kafelki dla klienta; tabelka dla sprzedawcy
   return (
     <div className="">
       <h2 className="topic border-bottom mb-3 w">Lista przedmiotów</h2>
       <div className="d-flex justify-content-center flex-column">
         <div className="mx-2 ">
-          <OutlineBtn txt="Dodaj nowy produkt" href={"./update"}/>
+          {(seller && <OutlineBtn txt="Dodaj nowy produkt" href={routes.SELLER_UPDATE_ITEM}/>)}
           <SearchBar className="mb-3" />
           {/* TODO: Tutaj postawić przycisk "Dodaj nowy artykuł" */}
           {(!seller && <BookCards cards={data} />)}
