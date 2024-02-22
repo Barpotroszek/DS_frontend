@@ -1,10 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-function Card({ key, img, href, title, dostepnosc, price }) {
+function Card({ img, href, title, dostepnosc, price }) {
   const elem = img ? <img src={img} className="img" alt="img"/> : <div className="img">książka</div>
   return (
-    <Link to={href} key={key} className="card">
+    <Link to={href} className="card">
       {elem}
       
       <div className="wrapper ">
@@ -17,10 +17,11 @@ function Card({ key, img, href, title, dostepnosc, price }) {
 }
 
 export default function BookCards({ name, cards }) {
-  const items = cards.map((item) => {
+  const items = cards.map((item, i) => {
     return (
       <Card
-        key={item.id}
+        key={i}
+        K={i}
         href={item.href}
         title={item.title}
         dostepnosc={item.dostepnosc}

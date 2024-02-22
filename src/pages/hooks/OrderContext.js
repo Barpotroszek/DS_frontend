@@ -10,7 +10,7 @@ export default function OrderProvider({ children }) {
     };
 
 useState(()=>{
-   try{setBasket(sessionStorage.getItem("basket").length);} catch {}}, [])
+   try{setBasket(sessionStorage.getItem("basket").length > 0);} catch {}}, [])
 
   return <myContex.Provider value={value}>{children}</myContex.Provider>;
 }

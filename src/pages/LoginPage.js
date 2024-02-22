@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useAuthContext } from "./hooks/AuthContext";
 import { PrimaryBtn } from "./components/Buttons";
 
@@ -7,10 +7,11 @@ export default function LoginPage() {
     // TODO: Zapisać wszelkie TOKENy itp do SessionStorage i 
     // TODO: odczytywać je przy kolejnych weryfikacjach(patrz na dole)
   const { handleLogin } = useAuthContext();
+  const [btnState, updateBtnState] = useState(false);
   return (
     <>
       <h2 className="topic border-bottom">Strona logowania</h2>
-      <form onSubmit={handleLogin} className="mx-2 my-3 w-50 d-flex flex-column" style={{alignSelf: "center"}}>
+      <form onSubmit={()=>{handleLogin(); updateBtnState(!btnState)}} className="mx-2 my-3 w-50 d-flex flex-column" style={{alignSelf: "center"}}>
         <div className="form-floating mb-2">
           <input
             type="text"
@@ -44,7 +45,7 @@ export default function LoginPage() {
       <small style={{fontStyle: "italic"}}>Wpisz cokolwiek, tu wszystko zadziała</small>
         
         <span className="mw mt-4 " style={{display: "grid", justifyContent: 'end'}}>
-                    <PrimaryBtn type="submit" txt="Zaloguj się" />
+                    <PrimaryBtn type="submit" txt="Zaloguj się" disabled={btnState} />
                 </span></form>
     </>
   );

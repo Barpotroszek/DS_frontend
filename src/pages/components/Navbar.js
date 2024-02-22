@@ -11,7 +11,7 @@ export default function Navbar({ target }) {
   const { basket } = useOrderContext();
   console.log("TARGET: ", target);
 
-  if (!userData) {
+  if (!userData.current) {
     urls = [
       { txt: "Strona główna", id: "main-page", href: routes.CLIENT_MAIN, func: null },
       // { txt: "Status zamówienia", id: "order-status", href: null, func: null },
@@ -19,7 +19,7 @@ export default function Navbar({ target }) {
       { txt: "Koszyk", id: "basket", href: routes.CLIENT_BASKET, basket },
       { txt: "Zaloguj się", id: "login", href: routes.LOGIN }
     ];
-  } else if (userData) {
+  } else if (userData.current) {
     urls = [
       { txt: "Panel sprzedawcy", id: "main-page", href: routes.SELLER_DASHBOARD + "/", func: null },
       { txt: "Zamówienia", id: "orders", href: routes.SELLER_ORDERS_MAIN + "/", basket},

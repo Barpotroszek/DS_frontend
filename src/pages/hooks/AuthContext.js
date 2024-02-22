@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useEffect, useState } from "react";
+import React, { createContext, useContext, useEffect, useState, useRef } from "react";
 import { Navigate, useLocation, useNavigate } from "react-router-dom";
 import routes from "../../routes";
 import Loading from "../components/Loading";
@@ -9,50 +9,58 @@ const myContex = createContext(),
   KEY = "user-credentials",
   fakeAuth = (creds) =>
     new Promise((resolve) => {
-      setTimeout(() => resolve("12345678"), 2500);
+      setTimeout(() => resolve("12345678"), 250);
     });
 
 export default function AuthProvider({ children }) {
-  const [userData, setCredentials] = useState(defaultUser),
+  const userData = useRef(defaultUser),
     [ifLoadedCreds, setLoadedCreds] = useState(false),
     location = useLocation();
 
-  const updateCreds = () => {
+  const setCredentials = (d) => {
+    sessionStorage.setItem(KEY, JSON.stringify(d));
+    userData.current = d;
+  }
+
+  useEffect(() => {
+    // Getting credentials from storage
     let creds = {};
+    // alert("Setting creds")
     try {
       creds = JSON.parse(sessionStorage.getItem(KEY));
+      if(!creds)
+        setLoadedCreds(true);
     } catch (error) {}
     fakeAuth(creds).then((token) => {
       creds.token = token;
-      setCredentials({...creds})
+      setCredentials(creds);
       setLoadedCreds(true);
     })
     .catch(()=>{
       setCredentials(null);
       setLoadedCreds(true);
     });
-  };
-
-  useEffect(updateCreds, []);
-
-
-  const midSetCredentials = (c) => {
-    sessionStorage.setItem(KEY, JSON.stringify(c));
-    setCredentials(c);
-  };
+  }, []);
 
   const nav = useNavigate();
-  const handleLogin = async (e) => {
+  const handleLogin = (e) => {
+    // debugger
     if (e) e.preventDefault();
-    const t = await fakeAuth();
-    midSetCredentials({ name: "Bartek", token: t });
-    nav(routes.SELLER_DASHBOARD);
+    // alert("Logging")
+    fakeAuth().then((t)=>{
+      let d = {name: "Bartek", token: t};
+      setCredentials(d);
+      console.log(userData.current)
+      nav(routes.SELLER_DASHBOARD)
+    });
+    
   };
-  const handleLogout = async (e) => {
-    if (e) e.preventDefault();
-    midSetCredentials(null);
-    nav(routes.CLIENT_MAIN);
-  };
+
+  const handleLogout = async () => {
+      setCredentials(null);
+      console.log("Logging out...")
+      nav(routes.CLIENT_MAIN);
+    };
 
   const value = {
     userData,
@@ -77,9 +85,10 @@ const redirectUnauthorized = () => {
 };
 
 const ProtectedPage = ({ children }) => {
-  const { userData } = useAuthContext(),
+  const { userData, ifLoadedCreds } = useAuthContext(),
     loc = useLocation();
-  if (!userData) {
+    console.log({userData})
+  if (!userData.current ) {
     return <Navigate to={routes.CLIENT_MAIN} state={{ from: loc }} />;
   }
   return children;

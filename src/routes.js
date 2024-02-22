@@ -26,8 +26,8 @@ const index = {
     UPDATE: "update",
     DETAILS: ":id",
   },
-  LOGIN: "login",
-  LOGOUT: "logout",
+  LOGIN: "/login",
+  LOGOUT: "/logout",
   CLIENT,
   SELLER,
 };

@@ -40,8 +40,8 @@ const App = () => {
           </Route>
           <Route path={routes.CLIENT.BASKET} element={<Basket />} />
           <Route path={routes.CLIENT.SUBMIT_ORDER} element={<SubmitOrder />} />
-          <Route path="login" element={<LoginPage />} />
-          <Route path="logout" element={<Logout />} />
+          <Route path={routes.LOGIN} element={<LoginPage />} />
+          <Route path={routes.LOGOUT} element={<Logout />} />
           <Route path="*" element={<NotFound />} />
         </Route>
         <Route element={<SellerRoot />} path={routes.SELLER.ROOT}>
