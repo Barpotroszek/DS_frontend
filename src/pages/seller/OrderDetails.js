@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { PrimaryBtn, SuccessBtn, CheckboxBtn } from "../components/Buttons";
 import "../../stylesheet/order_table.css";
 import img from "../../zabity_za_prawde.jpg";
+import routes from "../../routes";
+import { Link } from "react-router-dom";
 
 const order = {
   id: "20240215_1234",
@@ -47,12 +49,17 @@ let data = new Array(3).fill(
 
 export default function Content() {
   const list = data;
-  const [btns, btnsState] = useState(Array(list.length).fill(true)),
+  const [btns, btnsState] = useState(Array(list.length).fill(false)),
     // TODO: Aktualizowanie tego stanu
 
   [notify, updateNotify] = useState(false),
   [placeOrder, updatePlaceOrder] = useState(false);
   let sum = 0;
+
+  const notifyClient = () =>{
+    alert("Klient powiadomiony");
+    updatePlaceOrder(true);
+  }
 
   const updateState = (id, s) => {
     // Aktualizowanie przycisków "JEST"
@@ -64,7 +71,7 @@ export default function Content() {
     btnsState([...temp]);
     if(!temp.includes(false))
       updateNotify(true);
-    console.log(id, temp, btns);
+    // console.log(id, temp, btns);
   };
 
   return (
@@ -72,7 +79,7 @@ export default function Content() {
       <h2 className="topic border-bottom mg-3">
         Zamówienie #{order.id} - szczegóły
       </h2>
-      <ul>
+      <ul className="my-2">
         <li>
           Zamawiający: <strong>{order.person}</strong>
         </li>
@@ -109,7 +116,7 @@ export default function Content() {
                   <img className="img" src={d.img} alt="img"/>
                 </td>
                 <td key="title">
-                  <a href={"/details/" + d.id}>{d.title}</a>
+                  <Link to={routes.SELLER_ITEM_DETAILS.replace(":id", d.id)}>{d.title}</Link>
                 </td>
 
                 <td className="align-items-center" key="amount">
@@ -162,7 +169,7 @@ export default function Content() {
           { (Math.round(sum*100) / 100).toFixed(2) }
         </span>
 
-        <PrimaryBtn txt="Powiadom odbiorcę" disabled={!(notify&&!placeOrder)} onClick={()=>{updatePlaceOrder(true)}} />
+        <PrimaryBtn txt="Powiadom odbiorcę" disabled={!(notify&&!placeOrder)} onClick={()=>{notifyClient()}} />
         <SuccessBtn txt="Wydaj zamówienie" disabled={!(notify&&placeOrder)} />
       </span>
     </div>
