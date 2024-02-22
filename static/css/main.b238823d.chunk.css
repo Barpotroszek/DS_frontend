@@ -2,5 +2,5 @@
 
 /* ! Konsultacja: czy zostawiamy kropeczki przy linkach navbar czy nie?
     tak -> zostawić
-    nie -> usunąć .updateItem poniżej */.updateItem li::marker{content:"";margin:0}input[type=number]{text-align:right;padding-right:1em!important}ul>.row{grid-gap:2em;gap:2em}.img{display:flex;flex-direction:column;grid-gap:.3em;gap:.3em;align-items:center}img:not([src]),img[src=""]{border:2px solid #000;width:11em}.img>.btn{width:-webkit-max-content;width:max-content}
-/*# sourceMappingURL=main.c9fdccb3.chunk.css.map */
+    nie -> usunąć .updateItem poniżej */.updateItem li::marker{content:"";margin:0}input[type=number]{text-align:right;padding-right:1em!important}ul>.row{grid-gap:2em;gap:2em}.img{display:flex;flex-direction:column;grid-gap:.3em;gap:.3em;align-items:center}img:not([src]),img[src=""]{border:2px solid #000;max-width:11em}.img>.btn{width:-webkit-max-content;width:max-content}
+/*# sourceMappingURL=main.b238823d.chunk.css.map */
