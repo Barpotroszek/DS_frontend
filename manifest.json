@@ -1,5 +1,5 @@
 {
-  "short_name": "Diakonia Słowa DW-P",
+  "short_name": "Diakonia Słowa",
   "name": "Diakonia Słowa diecezja Warszawsko Praska",
   "icons": [
     {
@@ -8,7 +8,7 @@
       "sizes": "192x192"
     }
   ],
-  "start_url": ".",
+  "start_url": "/",
   "display": "standalone",
   "theme_color": "#000000",
   "background_color": "#2F4F4F"
