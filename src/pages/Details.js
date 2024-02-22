@@ -28,38 +28,33 @@ export default function Content({ seller }) {
       "Zaczęło się tak: Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quibusdam, assumenda earum facilis dolore id eligendi alias, rem officiis inventore sapiente ab quo nisi perferendis qui dolorem, labore repellat veniam dicta!";
 
   function addItemToBasket() {
-    // todo: do zrobienia
-    const d = [
-      {
-        id,
-        title,
-        price,
-        amount: 1,
-      },
-    ];
-    let temp = JSON.parse(sessionStorage.getItem("basket"));
+    const d = [id, title, price, 1, ""];
+
+    let temp = Array.from(JSON.parse(sessionStorage.getItem("basket")));
+    console.log({ temp });
     if (temp === null) temp = new Array([]);
     // const a = new Array()
-    const i = temp.findIndex((v) => v.id === id);
-    if (i < 0) temp = temp.concat(d);
-    else temp[i].amount += 1;
-    console.log(d);
+    const i = temp.findIndex((v) => v[0] === id);
+    console.log({temp})
+    if (i < 0) temp.push(d);
+    else temp[i][3] += 1;
+
+    console.log({ i, d, temp });
     sessionStorage.setItem("basket", JSON.stringify(temp));
     setBasket(true);
     alert("Dodano!");
   }
   let btn, btn_pc;
   console.log({ seller });
-  if (seller){
+  if (seller) {
     btn_pc = (
       <Link to={routes.SELLER_UPDATE_ITEM + "/" + id}>
-      <button className="my-btn pc" type="button">
+        <button className="my-btn pc" type="button">
           Aktualizuj artykuł
-      </button>
+        </button>
       </Link>
     );
-  }
-  else {
+  } else {
     btn = (
       // btn for PC (under img and .details)
       <button className="my-btn" type="button" onClick={addItemToBasket}>
