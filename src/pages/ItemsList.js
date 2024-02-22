@@ -40,7 +40,7 @@ function Tr(d, i) {
         {d.price}
       </td>
       <td className="bin">
-        <OutlineBtn onClick={() => {}} txt={"Aktualizuj"} href={"./update"} />
+        <OutlineBtn onClick={() => {}} txt={"Aktualizuj"} href={"./update/" +d.id} />
       </td>
     </tr>
   );
@@ -70,6 +70,7 @@ export default function ItemsList({ seller }) {
       <h2 className="topic border-bottom mb-3 w">Lista przedmiotów</h2>
       <div className="d-flex justify-content-center flex-column">
         <div className="mx-2 ">
+          <OutlineBtn txt="Dodaj nowy produkt" href={"./update"}/>
           <SearchBar className="mb-3" />
           {/* TODO: Tutaj postawić przycisk "Dodaj nowy artykuł" */}
           {(!seller && <BookCards cards={data} />)}
