@@ -281,3 +281,5 @@ footer {
 .loading > *{
 animation: loading-moving 3s ease-in-out infinite;
 }
+
+iframe{display: none !important;}

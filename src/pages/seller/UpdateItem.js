@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "../../stylesheet/update_item.css";
+import { PrimaryBtn } from "../components/Buttons";
+import { useParams } from "react-router-dom";
 
 function ParseCategory({ v }) {
   return (
@@ -9,13 +11,40 @@ function ParseCategory({ v }) {
   );
 }
 
+const uploadPhoto = () => {};
+const fetchData = (e) => new Promise((res) => setTimeout(res, 500));
+
+const fillItemData = (v) => {
+  document.getElementById("title").value = v[0] || null;
+  document.getElementById("category").value = v[1] || null;
+  document.getElementById("amount").value = v[2] || null;
+  document.getElementById("prize").value = v[3] || null;
+  document.getElementById("description").innerText = v[4] || null;
+};
+
+const item = [
+  "Zabity za prawdę",
+  4,
+  null,
+  35.22,
+  "Zaczęło się tak: Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quibusdam, assumenda earum facilis dolore id eligendi alias, rem officiis inventore sapiente ab quo nisi perferendis qui dolorem, labore repellat veniam dicta!",
+];
+
 export default function UpdateItem({}) {
-  const [categories, updateCategories] = useState([]);
+  const [categories, updateCategories] = useState([]),
+    [fetchStatus, updateFetchStatus] = useState(false),
+    id = useParams()["id"];
+
   useEffect(() => {
     let temp = JSON.parse(sessionStorage.getItem("categories"));
     updateCategories(temp);
+
+    if (id)
+      fetchData().then(() => {
+        fillItemData(item);
+        updateFetchStatus(true);
+      });
   }, []);
-  console.log(categories);
 
   return (
     <div className="updateItem">
@@ -23,7 +52,7 @@ export default function UpdateItem({}) {
       <div className="wrapper">
         <div className="img">
           <img alt="Miejsce na zdjęcie" />
-          <button className="btn btn-secondary" onClick={() => {}}>
+          <button className="btn btn-secondary" onClick={(e) => uploadPhoto(e)}>
             Dodaj/aktualizuj zdjęcie
           </button>
         </div>
@@ -53,8 +82,8 @@ export default function UpdateItem({}) {
                 <option value="" disabled>
                   ...
                 </option>
-                {categories.map((v) => {
-                  return <ParseCategory v={v} />;
+                {categories.map((v, i) => {
+                  return <ParseCategory key={i} v={v} />;
                 })}
               </select>
               <label htmlFor="category" className="form-label">
@@ -108,9 +137,7 @@ export default function UpdateItem({}) {
               className="mw"
               style={{ display: "grid", justifyContent: "end" }}
             >
-              <button className="btn btn-primary mb-1" disabled>
-                Dodaj/aktualizuj pozycję
-              </button>
+              <PrimaryBtn txt="Dodaj/aktualizuj pozycję" />
             </div>
           </ul>
         </form>

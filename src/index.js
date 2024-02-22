@@ -51,6 +51,7 @@ const App = () => {
             <Route index element={<ItemsList seller/>} />
             <Route path={routes.ITEMS.DETAILS} element={<ItemDetails seller/>} />
             <Route path={routes.ITEMS.UPDATE} element={<UpdateItem />} />
+            <Route path={routes.ITEMS.UPDATE + "/:id"} element={<UpdateItem />} />
           </Route>
           <Route path={routes.SELLER.ORDERS.MAIN}>
             <Route index element={<OrdersList />} />

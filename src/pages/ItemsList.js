@@ -40,7 +40,7 @@ function Tr(d, i) {
         {d.price}
       </td>
       <td className="bin">
-        <OutlineBtn onClick={() => {}} txt={"Aktualizuj"} href={"./update"} />
+        <OutlineBtn onClick={() => {}} txt={"Aktualizuj"} href={"./update/" +d.id} />
       </td>
     </tr>
   );

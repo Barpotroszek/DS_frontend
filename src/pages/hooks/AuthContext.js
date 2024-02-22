@@ -87,7 +87,7 @@ const redirectUnauthorized = () => {
 const ProtectedPage = ({ children }) => {
   const { userData, ifLoadedCreds } = useAuthContext(),
     loc = useLocation();
-    console.log({userData})
+    // console.log({userData})
   if (!userData.current ) {
     return <Navigate to={routes.CLIENT_MAIN} state={{ from: loc }} />;
   }

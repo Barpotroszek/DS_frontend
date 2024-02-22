@@ -9,7 +9,6 @@ let urls;
 export default function Navbar({ target }) {
   const { userData } = useAuthContext();
   const { basket } = useOrderContext();
-  console.log("TARGET: ", target);
 
   if (!userData.current) {
     urls = [
