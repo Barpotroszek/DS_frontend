@@ -65,6 +65,7 @@ body {
 #container{
     display: grid;
     grid-template-rows: auto 1fr auto ;
+    background-color: var(--main-bg);
 }
 
 @media (min-width: 900px) {
@@ -266,4 +267,17 @@ footer {
     background-color: var(--footer-bg);
     color: var(--footer-font);
     padding: 1em 2em;
+}
+
+@keyframes loading-moving {
+    0%, 100%{
+        transform: rotate(10deg);
+    }
+    50%{
+        transform:  rotate(-10deg);
+    }
+}
+
+.loading > *{
+animation: loading-moving 3s ease-in-out infinite;
 }

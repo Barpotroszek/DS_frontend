@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/DS_frontend/static/css/main.ede46d38.chunk.css",
-    "main.js": "/DS_frontend/static/js/main.f55e3469.chunk.js",
-    "main.js.map": "/DS_frontend/static/js/main.f55e3469.chunk.js.map",
+    "main.css": "/DS_frontend/static/css/main.c9fdccb3.chunk.css",
+    "main.js": "/DS_frontend/static/js/main.98a057bf.chunk.js",
+    "main.js.map": "/DS_frontend/static/js/main.98a057bf.chunk.js.map",
     "runtime-main.js": "/DS_frontend/static/js/runtime-main.6bf36afb.js",
     "runtime-main.js.map": "/DS_frontend/static/js/runtime-main.6bf36afb.js.map",
     "static/js/2.dcf2f5c8.chunk.js": "/DS_frontend/static/js/2.dcf2f5c8.chunk.js",
@@ -10,9 +10,9 @@
     "static/js/3.13c2a01f.chunk.js": "/DS_frontend/static/js/3.13c2a01f.chunk.js",
     "static/js/3.13c2a01f.chunk.js.map": "/DS_frontend/static/js/3.13c2a01f.chunk.js.map",
     "index.html": "/DS_frontend/index.html",
-    "precache-manifest.aeb0cd95361f1612cd3390c0d7271f3b.js": "/DS_frontend/precache-manifest.aeb0cd95361f1612cd3390c0d7271f3b.js",
+    "precache-manifest.6672911ba8008b6e35791ba182b327a1.js": "/DS_frontend/precache-manifest.6672911ba8008b6e35791ba182b327a1.js",
     "service-worker.js": "/DS_frontend/service-worker.js",
-    "static/css/main.ede46d38.chunk.css.map": "/DS_frontend/static/css/main.ede46d38.chunk.css.map",
+    "static/css/main.c9fdccb3.chunk.css.map": "/DS_frontend/static/css/main.c9fdccb3.chunk.css.map",
     "static/js/2.dcf2f5c8.chunk.js.LICENSE.txt": "/DS_frontend/static/js/2.dcf2f5c8.chunk.js.LICENSE.txt",
     "static/media/notFound.css": "/DS_frontend/static/media/glass.df4ca9d0.png",
     "static/media/zabity_za_prawde.jpg": "/DS_frontend/static/media/zabity_za_prawde.4fcb4f47.jpg"
@@ -20,7 +20,7 @@
   "entrypoints": [
     "static/js/runtime-main.6bf36afb.js",
     "static/js/2.dcf2f5c8.chunk.js",
-    "static/css/main.ede46d38.chunk.css",
-    "static/js/main.f55e3469.chunk.js"
+    "static/css/main.c9fdccb3.chunk.css",
+    "static/js/main.98a057bf.chunk.js"
   ]
 }
