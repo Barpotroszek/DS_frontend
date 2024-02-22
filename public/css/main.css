@@ -241,6 +241,8 @@ h3{font-size: 1.4em !important;}
     padding: .5em 1em;
     border-radius: .5em;
     transition: all .1s;
+    /* text-decoration:; */
+    width: 100%;
 }
 
 .my-btn:hover {

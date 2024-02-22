@@ -2,6 +2,8 @@ import React from "react";
 import img from "../zabity_za_prawde.jpg";
 import "../stylesheet/details.css";
 import { useOrderContext } from "./hooks/OrderContext";
+import routes from "../routes";
+import { Link } from "react-router-dom";
 
 function labelDetail(d) {
   return (
@@ -11,7 +13,7 @@ function labelDetail(d) {
   );
 }
 
-export default function Content({ root }) {
+export default function Content({ seller }) {
   // feat: Uzupelniane po pobraniu danych z bazy
   const { setBasket } = useOrderContext();
   const details_list = [
@@ -47,27 +49,30 @@ export default function Content({ root }) {
     alert("Dodano!");
   }
   let btn, btn_pc;
-  if (root === "seller")
-    // TODO: Zrobić aktualizowanie produktu (strona i przycisk tam przekierowujący)
-    btn = (
-      <button className="my-btn" type="button" disabled>
-        Aktualizuj artykuł
+  console.log({ seller });
+  if (seller){
+    btn_pc = (
+      <Link to={routes.SELLER_UPDATE_ITEM + "/" + id}>
+      <button className="my-btn pc" type="button">
+          Aktualizuj artykuł
       </button>
+      </Link>
     );
+  }
   else {
     btn = (
-        // btn for PC (under img and .details)
+      // btn for PC (under img and .details)
       <button className="my-btn" type="button" onClick={addItemToBasket}>
         Dodaj do koszyka
       </button>
     );
-    
+
     btn_pc = (
-        // btn for PC (in .details)
-        <button className="my-btn pc" type="button" onClick={addItemToBasket}>
-          Dodaj do koszyka
-        </button>
-      );
+      // btn for PC (in .details)
+      <button className="my-btn pc" type="button" onClick={addItemToBasket}>
+        Dodaj do koszyka
+      </button>
+    );
   }
   return (
     <div className="DetailsContainer ">
