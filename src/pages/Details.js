@@ -29,13 +29,19 @@ export default function Content({ seller }) {
 
   function addItemToBasket() {
     const d = [id, title, price, 1, ""];
-
-    let temp = Array.from(JSON.parse(sessionStorage.getItem("basket")));
-    console.log({ temp });
-    if (temp === null) temp = new Array([]);
+    let temp; 
+    try {
+      temp = JSON.parse(sessionStorage.getItem("basket"))
+      console.log({ temp });
+      if (temp === null) temp = new Array([]);
+      else
+        temp = Array.from(temp);
+    } catch {
+      temp = new Array([]);
+    }
     // const a = new Array()
     const i = temp.findIndex((v) => v[0] === id);
-    console.log({temp})
+    console.log({ temp });
     if (i < 0) temp.push(d);
     else temp[i][3] += 1;
 
