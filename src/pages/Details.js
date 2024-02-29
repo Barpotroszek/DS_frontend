@@ -15,7 +15,7 @@ function labelDetail(d) {
 
 export default function Content({ seller }) {
   // feat: Uzupelniane po pobraniu danych z bazy
-  const { setBasket } = useOrderContext();
+  const { setBasket, displayAlert } = useOrderContext();
   const details_list = [
     { cat_id: "dostepnosc", name: "Dostępność: ", val: "Jest w magazynie" },
     { cat_id: "category", name: "Kategoria: ", val: "x. Blachnicki" },
@@ -48,7 +48,9 @@ export default function Content({ seller }) {
     console.log({ i, d, temp });
     sessionStorage.setItem("basket", JSON.stringify(temp));
     setBasket(true);
-    alert("Dodano!");
+    console.log({displayAlert})
+    displayAlert();
+    // alert("Dodano!");
   }
   let btn, btn_pc;
   console.log({ seller });

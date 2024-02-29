@@ -66,6 +66,7 @@ body {
     display: grid;
     grid-template-rows: auto 1fr auto ;
     background-color: var(--main-bg);
+    position: relative;
 }
 
 @media (min-width: 900px) {

@@ -1,0 +1,34 @@
+#alert {
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    background-color: black;
+    z-index: 5;
+    background-color: white;
+    padding: .5em 2em;
+    border-radius: .5em;
+    transform: translate(-50%, -50em);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: max-content;
+    /* opacity: 0; */
+    transition: .6s opacity, .5s transform;
+    border: 2px solid;
+    font-weight: bolder;
+    font-size: 1.2em;
+}
+#alert > * {
+    margin: .5em 0;
+}
+
+#alert.active{
+    opacity: 1;
+    transform: translate(-50%, -50%);
+}
+
+
+#alert div.btn {
+    align-self: flex-end;
+}
