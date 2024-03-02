@@ -12,8 +12,10 @@ const displayAlert = ()=>
 const ItemAlert = () => {
   return (
         <div className="alert">
+          <div>
           <span>Dodano do koszyka!</span>
           <PrimaryBtn txt="OK" onClick={hideAlert} />
+        </div>
         </div>
   );
 };
