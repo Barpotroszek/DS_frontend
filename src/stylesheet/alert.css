@@ -1,6 +1,6 @@
 /* alert.css */
 
-#alert {
+.alert {
     position: absolute;
     top: 30%;
     left: 50%;
@@ -21,16 +21,16 @@
     font-weight: bolder;
     font-size: 1.2em;
 }
-#alert > * {
+.alert > * {
     margin: .5em 0;
 }
 
-#alert.active{
+.alert.active{
     opacity: 1;
     transform: translate(-50%, -50%);
 }
 
 
-#alert div.btn {
+.alert div.btn {
     align-self: flex-end;
 }

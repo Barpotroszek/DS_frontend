@@ -21,6 +21,7 @@ import NotFound from "./pages/NotFound";
 
 import AuthProvider from "./pages/hooks/AuthContext";
 import OrderProvider from "./pages/hooks/OrderContext";
+import ErrorBoundary from "./pages/hooks/ErrorBoundary"
 
 import { index as routes } from "./routes";
 import UpdateItem from "./pages/seller/UpdateItem";
@@ -29,6 +30,7 @@ const root = ReactDOM.createRoot(document.getElementById("container"));
 
 const App = () => {
   return (
+    <ErrorBoundary>
     <OrderProvider>
     <AuthProvider>
       <Routes>
@@ -68,6 +70,7 @@ const App = () => {
       </Routes>
     </AuthProvider>
     </OrderProvider>
+    </ErrorBoundary>
   );
 };
 

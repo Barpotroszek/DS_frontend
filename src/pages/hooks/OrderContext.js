@@ -4,14 +4,14 @@ import "../../stylesheet/alert.css"
 
 const myContex = createContext();
 const hideAlert = ()=>{
-  document.querySelector("#alert.active").classList.remove("active");
+  document.querySelector(".alert.active").classList.remove("active");
   };
 const displayAlert = ()=>
-  document.querySelector("#alert").classList.add("active");
+  document.querySelector(".alert").classList.add("active");
 
 const ItemAlert = () => {
   return (
-        <div id="alert">
+        <div className="alert">
           <span>Dodano do koszyka!</span>
           <PrimaryBtn txt="OK" onClick={hideAlert} />
         </div>
